@@ -861,6 +861,13 @@
     }
 
     /* ─── ACHIEVEMENTS ─────────────────── */
+    .ach-section-wrap {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 2rem;
+      align-items: start;
+    }
+
     .ach-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -914,6 +921,147 @@
       font-size: .83rem;
       color: var(--muted);
       line-height: 1.65
+    }
+
+    /* ─── SPOTLIGHT CARD ────────────────── */
+    .spotlight-card {
+      border: 1px solid rgba(124, 92, 252, .35);
+      border-radius: 22px;
+      background: linear-gradient(160deg, rgba(124, 92, 252, .07) 0%, rgba(80, 48, 176, .04) 100%);
+      padding: 2rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(124, 92, 252, .08);
+      transition: border-color .3s, box-shadow .3s, transform .3s;
+    }
+
+    .spotlight-card::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124, 92, 252, .18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .spotlight-card:hover {
+      border-color: rgba(124, 92, 252, .6);
+      box-shadow: 0 0 60px rgba(124, 92, 252, .18);
+      transform: translateY(-4px);
+    }
+
+    .spotlight-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(124, 92, 252, .12);
+      border: 1px solid rgba(124, 92, 252, .25);
+      border-radius: 100px;
+      padding: .25rem .75rem;
+      width: fit-content;
+    }
+
+    .spotlight-badge span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: inline-block;
+      animation: pulse 1.8s infinite;
+    }
+
+    .spotlight-headline {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+      line-height: 1.35;
+      color: var(--text);
+    }
+
+    .spotlight-body {
+      font-size: .85rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .spotlight-body p {
+      margin-bottom: .55rem;
+    }
+
+    .spotlight-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .spotlight-divider {
+      height: 1px;
+      background: var(--border);
+    }
+
+    .spotlight-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .65rem 1.4rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: .82rem;
+      background: linear-gradient(135deg, var(--accent), #5030b0);
+      color: #fff;
+      text-decoration: none;
+      transition: opacity .2s, transform .2s;
+      align-self: flex-start;
+      box-shadow: 0 4px 18px rgba(124, 92, 252, .28);
+    }
+
+    .spotlight-cta:hover {
+      opacity: .85;
+      transform: translateY(-2px);
+    }
+
+    .spotlight-stat-row {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .spotlight-stat {
+      flex: 1;
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: .75rem .9rem;
+      text-align: center;
+    }
+
+    .spotlight-stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--accent);
+      display: block;
+    }
+
+    .spotlight-stat-label {
+      font-size: .68rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    @media(max-width:1100px) {
+      .ach-section-wrap {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* ─── CONTACT ─────────────────────── */
@@ -1119,6 +1267,10 @@
         grid-template-columns: 1fr
       }
 
+      .ach-section-wrap {
+        grid-template-columns: 1fr
+      }
+
       .contact-wrap {
         grid-template-columns: 1fr
       }
@@ -1189,7 +1341,7 @@
         <span class="hi">Hello, I'm</span>
         <span class="name">Aditya Singh</span>
       </h1>
-      <p class="hero-role"><strong>Java Developer · ML Engineer</strong><br>CS Undergraduate @ Chandigarh University</p>
+      <p class="hero-role"><strong>I build things on the internet so ideas don't stay in notebooks.</strong><br>CS Undergraduate @ Chandigarh University</p>
       <div class="hero-btns">
         <a href="#projects" class="btn-primary">View My Work ↓</a>
         <a href="mailto:adityaa07singh@gmail.com" class="btn-outline">Get In Touch</a>
@@ -1207,8 +1359,10 @@
       <div class="photo-inner">
         <img src="image.png" alt="Aditya Singh" />
       </div>
-      <div class="float-badge b1">🚀 Spring Boot + ML</div>
-      <div class="float-badge b2">⭐ IJSREM Published</div>
+      <div class="float-badge b1">🔎 Always exploring tech</div>
+    
+      <div class="float-badge b2">☕ Coffee → Code converter</div>
+      
     </div>
   </section>
 
@@ -1259,7 +1413,7 @@
           <div class="acard-icon">📍</div>
           <div>
             <div class="acard-title">Location</div>
-            <div class="acard-sub">Mohali, India · Available Remotely</div>
+            <div class="acard-sub">Mohali, India </div>
           </div>
         </div>
       </div>
@@ -1327,7 +1481,7 @@
             class="tech-pill">Render</span>
         </div>
         <div class="pcard-links">
-          <a href="#" class="plink fill">GitHub ↗</a>
+          <a href="https://github.com/Adi96singh/url-shortener" class="plink fill">GitHub ↗</a>
           <span class="plink">Nov 2025</span>
         </div>
       </div>
@@ -1343,7 +1497,7 @@
             class="tech-pill">TF-IDF</span>
         </div>
         <div class="pcard-links">
-          <a href="#" class="plink fill">GitHub ↗</a>
+          <a href="https://github.com/Adi96singh/FakeReviewIdentifier" class="plink fill">GitHub ↗</a>
           <span class="plink">May 2025</span>
         </div>
       </div>
@@ -1359,7 +1513,7 @@
             class="tech-pill">Seaborn</span>
         </div>
         <div class="pcard-links">
-          <a href="#" class="plink fill">GitHub ↗</a>
+          <a href="https://github.com/Adi96singh/Customer_Churn_prediction" class="plink fill">GitHub ↗</a>
           <span class="plink">Sep 2024</span>
         </div>
       </div>
@@ -1368,7 +1522,7 @@
 
   <!-- GAMES -->
   <section id="games">
-    <div class="section-label reveal">Mini Games</div>
+    <div class="section-label reveal">Don't get bored play the games developed by me</div>
     <div class="section-title reveal">Play my <em>arcade</em></div>
     <div class="games-grid">
 
@@ -1447,43 +1601,78 @@
   <section id="achievements">
     <div class="section-label reveal">Achievements</div>
     <div class="section-title reveal">Milestones &amp; <em>recognition</em></div>
-    <div class="ach-grid">
-      <div class="ach-card reveal">
-        <div class="ach-icon">⭐</div>
-        <div>
-          <div class="ach-year">2024</div>
-          <div class="ach-title">5-Star Java · 4-Star Python on HackerRank</div>
-          <div class="ach-desc">Top-tier ratings on HackerRank — 5 stars in Java and 4 stars in Python — demonstrating
-            strong algorithmic proficiency and language mastery.</div>
+    <div class="ach-section-wrap">
+
+      <!-- Left: existing 2×2 grid -->
+      <div class="ach-grid">
+        <div class="ach-card reveal">
+          <div class="ach-icon">⭐</div>
+          <div>
+            <div class="ach-year">2024</div>
+            <div class="ach-title">5-Star Java · 4-Star Python on HackerRank</div>
+            <div class="ach-desc">Top-tier ratings on HackerRank — 5 stars in Java and 4 stars in Python — demonstrating
+              strong algorithmic proficiency and language mastery.</div>
+          </div>
+        </div>
+        <div class="ach-card reveal">
+          <div class="ach-icon">📄</div>
+          <div>
+            <div class="ach-year">May 2025</div>
+            <div class="ach-title">Research Published — IJSREM</div>
+            <div class="ach-desc">"ProjectBuddy: A Guided Learning Platform for Student Projects" published in IJSREM,
+              Volume 09, Issue 05. DOI: 10.55041/IJSREM43773</div>
+          </div>
+        </div>
+        <div class="ach-card reveal">
+          <div class="ach-icon">🏛️</div>
+          <div>
+            <div class="ach-year">May 2023 – May 2024</div>
+            <div class="ach-title">Vice Chairperson — IEEE CIS CUSB</div>
+            <div class="ach-desc">Led the IEEE Computational Intelligence Society chapter at Chandigarh University,
+              driving technical events and student initiatives across the campus community.</div>
+          </div>
+        </div>
+        <div class="ach-card reveal">
+          <div class="ach-icon">🏆</div>
+          <div>
+            <div class="ach-year">2023</div>
+            <div class="ach-title">2nd Runner-up — University Debate Competition</div>
+            <div class="ach-desc">Secured 2nd Runner-up in the University Debate Competition, demonstrating strong
+              analytical thinking, public speaking, and articulation under pressure.</div>
+          </div>
         </div>
       </div>
-      <div class="ach-card reveal">
-        <div class="ach-icon">📄</div>
-        <div>
-          <div class="ach-year">May 2025</div>
-          <div class="ach-title">Research Published — IJSREM</div>
-          <div class="ach-desc">"ProjectBuddy: A Guided Learning Platform for Student Projects" published in IJSREM,
-            Volume 09, Issue 05. DOI: 10.55041/IJSREM43773</div>
+
+      <!-- Right: 30-Day Java Spotlight -->
+      <div class="spotlight-card reveal">
+        <div class="spotlight-badge"><span></span> 30-Day Challenge</div>
+        <div class="spotlight-headline">🎯 I Did It — 30 Days of Java. Public. Consistent. Unstoppable.</div>
+        <div class="spotlight-stat-row">
+          <div class="spotlight-stat">
+            <span class="spotlight-stat-num">30</span>
+            <span class="spotlight-stat-label">Days Straight</span>
+          </div>
+          <div class="spotlight-stat">
+            <span class="spotlight-stat-num">100%</span>
+            <span class="spotlight-stat-label">Consistency</span>
+          </div>
+          <div class="spotlight-stat">
+            <span class="spotlight-stat-num">Free</span>
+            <span class="spotlight-stat-label">Notes for All</span>
+          </div>
         </div>
-      </div>
-      <div class="ach-card reveal">
-        <div class="ach-icon">🏛️</div>
-        <div>
-          <div class="ach-year">May 2023 – May 2024</div>
-          <div class="ach-title">Vice Chairperson — IEEE CIS CUSB</div>
-          <div class="ach-desc">Led the IEEE Computational Intelligence Society chapter at Chandigarh University,
-            driving technical events and student initiatives across the campus community.</div>
+        <div class="spotlight-divider"></div>
+        <div class="spotlight-body">
+          <p>No likes? No problem. No audience? Didn't matter. Because this wasn't about going viral — this was about
+            going <strong>consistent</strong>.</p>
+          <p>For 30 days, I showed up every single day on Twitter, learning Java from scratch and sharing everything —
+            from basics to advanced, from loops to JDBC, from syntax to mini-projects.</p>
+          <p>📚 Now I'm sharing all my Java notes — <strong>FREE for everyone</strong>. If you're a beginner, a
+            struggler, or someone who's tried and paused too many times — this roadmap is for you.</p>
         </div>
+        <a href="https://shorturl.at/nQPg8" target="_blank" class="spotlight-cta">📥 Grab the Notes ↗</a>
       </div>
-      <div class="ach-card reveal">
-        <div class="ach-icon">🏆</div>
-        <div>
-          <div class="ach-year">2023</div>
-          <div class="ach-title">2nd Runner-up — University Debate Competition</div>
-          <div class="ach-desc">Secured 2nd Runner-up in the University Debate Competition, demonstrating strong
-            analytical thinking, public speaking, and articulation under pressure.</div>
-        </div>
-      </div>
+
     </div>
   </section>
 
