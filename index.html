@@ -1297,6 +1297,245 @@
         padding: 80px 5vw
       }
     }
+
+    /* ─── CHATBOT ──────────────────────── */
+    .chatbot-icon {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--accent), #6040d0);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(124, 92, 252, .4);
+      transition: transform .3s, box-shadow .3s;
+      z-index: 1000;
+      border: none;
+      font-size: 1.5rem;
+    }
+
+    .chatbot-icon:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 30px rgba(124, 92, 252, .6);
+    }
+
+    .chatbot-window {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      width: 380px;
+      height: 520px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
+      animation: slideUp .4s ease;
+      z-index: 1000;
+      overflow: hidden;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .chatbot-window.hidden {
+      display: none;
+    }
+
+    .chatbot-header {
+      background: linear-gradient(135deg, var(--accent), #6040d0);
+      padding: 1.2rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .chatbot-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .chatbot-subtitle {
+      font-size: .75rem;
+      opacity: .85;
+    }
+
+    .chatbot-close {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.3rem;
+      cursor: pointer;
+      padding: 0;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity .2s;
+    }
+
+    .chatbot-close:hover {
+      opacity: .75;
+    }
+
+    .chatbot-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: .8rem;
+      background: var(--bg);
+    }
+
+    .chat-message {
+      display: flex;
+      gap: .6rem;
+      animation: fadeIn .3s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .chat-message.user {
+      justify-content: flex-end;
+    }
+
+    .chat-bubble {
+      max-width: 75%;
+      padding: .75rem 1rem;
+      border-radius: 12px;
+      font-size: .88rem;
+      line-height: 1.5;
+      word-wrap: break-word;
+    }
+
+    .chat-bubble.bot {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .chat-bubble.user {
+      background: linear-gradient(135deg, var(--accent), #6040d0);
+      color: #fff;
+    }
+
+    .typing-indicator {
+      display: flex;
+      gap: .3rem;
+      padding: .75rem 1rem;
+    }
+
+    .typing-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: typing .6s infinite;
+    }
+
+    .typing-dot:nth-child(2) {
+      animation-delay: .1s;
+    }
+
+    .typing-dot:nth-child(3) {
+      animation-delay: .2s;
+    }
+
+    @keyframes typing {
+      0%, 60%, 100% {
+        opacity: .3;
+        transform: translateY(0);
+      }
+      30% {
+        opacity: 1;
+        transform: translateY(-6px);
+      }
+    }
+
+    .chatbot-input-wrap {
+      border-top: 1px solid var(--border);
+      padding: .8rem;
+      display: flex;
+      gap: .6rem;
+    }
+
+    .chatbot-input {
+      flex: 1;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: .6rem .8rem;
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: .85rem;
+      outline: none;
+      transition: border-color .2s;
+    }
+
+    .chatbot-input:focus {
+      border-color: rgba(124, 92, 252, .5);
+    }
+
+    .chatbot-send {
+      background: linear-gradient(135deg, var(--accent), #6040d0);
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: opacity .2s, transform .2s;
+      font-weight: 600;
+    }
+
+    .chatbot-send:hover {
+      opacity: .85;
+      transform: scale(1.05);
+    }
+
+    @media(max-width:600px) {
+      .chatbot-window {
+        width: 100%;
+        height: 100%;
+        bottom: 0;
+        right: 0;
+        border-radius: 0;
+      }
+
+      .chatbot-icon {
+        bottom: 20px;
+        right: 20px;
+      }
+    }
   </style>
 </head>
 
@@ -1727,6 +1966,23 @@
     <p>© 2026 Aditya Singh · Built with passion for engineering ✦</p>
   </footer>
 
+  <!-- CHATBOT -->
+  <button class="chatbot-icon" id="chatbotIcon">💬</button>
+  <div class="chatbot-window hidden" id="chatbotWindow">
+    <div class="chatbot-header">
+      <div>
+        <div class="chatbot-title">Aditya's Assistant</div>
+        <div class="chatbot-subtitle">Ask me anything about Aditya</div>
+      </div>
+      <button class="chatbot-close" id="closeChatbot">✕</button>
+    </div>
+    <div class="chatbot-messages" id="chatbotMessages"></div>
+    <div class="chatbot-input-wrap">
+      <input type="text" class="chatbot-input" id="chatbotInput" placeholder="Ask something..." />
+      <button class="chatbot-send" id="chatbotSend">↗</button>
+    </div>
+  </div>
+
   <script>
     // ── Cursor
     const cursor = document.getElementById('cursor');
@@ -1793,6 +2049,337 @@
       if (!n || !em || !msg) { alert('Please fill in all required fields.'); return; }
       document.getElementById('formWrap').style.display = 'none';
       document.getElementById('formSuccess').style.display = 'block';
+    });
+
+    // ── CHATBOT ──────────────────────
+    const chatbotIcon = document.getElementById('chatbotIcon');
+    const chatbotWindow = document.getElementById('chatbotWindow');
+    const closeChatbot = document.getElementById('closeChatbot');
+    const chatbotInput = document.getElementById('chatbotInput');
+    const chatbotSend = document.getElementById('chatbotSend');
+    const chatbotMessages = document.getElementById('chatbotMessages');
+    let chatStarted = false;
+
+    // Chatbot Knowledge Base
+    const chatbotData = {
+      name: 'Aditya Singh',
+      role: 'Computer Science undergraduate and full-stack developer',
+      email: 'adityaa07singh@gmail.com',
+      phone: '+91 7505984084',
+      skills: {
+        languages: 'Java, Python, JavaScript',
+        backend: 'Spring Boot, Flask',
+        ml: 'Scikit-learn, TensorFlow, NLP, TF-IDF, Logistic Regression, Random Forest, SVM',
+        web: 'HTML, CSS, JavaScript',
+        databases: 'MySQL, PostgreSQL, JPA',
+        tools: 'Git, Postman, VS Code, IntelliJ'
+      },
+      projects: [
+        {
+          name: 'URL Shortener',
+          desc: 'A Spring Boot web app that generates short URLs with clean architecture (Controller-Service-Repository), secure validation, and PostgreSQL backend. Deployed on Render.',
+          tech: 'Java, Spring Boot, PostgreSQL, JPA'
+        },
+        {
+          name: 'Fake Review Identifier',
+          desc: 'An NLP-powered system using Python and Scikit-learn to detect fake product reviews. Features TF-IDF vectorization, ML models, and a Flask REST API with interactive frontend.',
+          tech: 'Python, NLP, Scikit-learn, Flask, TF-IDF'
+        },
+        {
+          name: 'Customer Churn Prediction',
+          desc: 'ML system predicting customer churn using Logistic Regression and Random Forest. Includes EDA, feature engineering, and a Flask API dashboard.',
+          tech: 'Python, Scikit-learn, Flask, Data Visualization'
+        }
+      ],
+      research: 'Published "ProjectBuddy: A Guided Learning Platform for Student Projects" in IJSREM (International Journal of Scientific Research in Engineering and Management), Volume 09, Issue 05, May 2025. DOI: 10.55041/IJSREM43773',
+      achievements: [
+        '5-star Java coder on HackerRank',
+        '4-star Python coder on HackerRank',
+        'Vice Chairperson of IEEE CIS CUSB (May 2023 – May 2024)',
+        '2nd Runner-up in University Debate Competition',
+        'Completed 30-day Java learning challenge with daily Twitter posts and free notes'
+      ],
+      education: 'Bachelor of Engineering in Computer Science at Chandigarh University (2022 – Present)'
+    };
+
+    function sendChatMessage(text, isUser) {
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `chat-message ${isUser ? 'user' : 'bot'}`;
+      const bubble = document.createElement('div');
+      bubble.className = `chat-bubble ${isUser ? 'user' : 'bot'}`;
+      bubble.textContent = text;
+      messageDiv.appendChild(bubble);
+      chatbotMessages.appendChild(messageDiv);
+      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+
+    function showTyping() {
+      const messageDiv = document.createElement('div');
+      messageDiv.className = 'chat-message bot';
+      messageDiv.innerHTML = '<div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';
+      messageDiv.id = 'typingIndicator';
+      chatbotMessages.appendChild(messageDiv);
+      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+
+    function removeTyping() {
+      const typing = document.getElementById('typingIndicator');
+      if (typing) typing.remove();
+    }
+
+    function getBotResponse(userMessage) {
+      const msg = userMessage.toLowerCase().trim();
+
+      // ─── GREETINGS ───────────────────────
+      if (msg.includes('hi') || msg.includes('hello') || msg.includes('hey')) {
+        return 'Hey there! 👋 I\'m Aditya\'s portfolio assistant. Ask me about his projects, skills, research, achievements, or anything else!';
+      }
+
+      if (msg.includes('thank') || msg.includes('thanks')) {
+        return 'Happy to help! 😊 Feel free to ask more questions anytime!';
+      }
+
+      // ─── WHO IS ADITYA ───────────────────
+      if (msg.includes('who is') || msg.includes('tell me about') || msg.includes('about aditya') || msg.includes('about him')) {
+        return `Hey! 👨‍💻 ${chatbotData.name} is a passionate ${chatbotData.role}. He\'s a CS undergrad at Chandigarh University who loves building production-grade systems and ML applications. He\'s published research, led IEEE chapters, is a 5-star Java/4-star Python coder on HackerRank, and ships real projects to production! 🚀`;
+      }
+
+      // ─── SKILLS - GENERAL ────────────────
+      if (msg.includes('skill') || msg.includes('what can he') || msg.includes('familiar with') || msg.includes('technologies') || msg.includes('tech stack') || msg.includes('what does he know')) {
+        return `Aditya\'s toolkit is solid! 🛠️\n\n☕ **Languages**: ${chatbotData.skills.languages}\n🌱 **Backend**: ${chatbotData.skills.backend}\n🧠 **ML & Data**: ${chatbotData.skills.ml}\n🎨 **Web**: ${chatbotData.skills.web}\n🗄️ **Databases**: ${chatbotData.skills.databases}\n🔧 **Tools**: ${chatbotData.skills.tools}`;
+      }
+
+      // ─── SPECIFIC SKILLS ─────────────────
+      if (msg.includes('java') && !msg.includes('javascript')) {
+        return `☕ **Java** — Aditya is highly proficient in Java with a 5-star rating on HackerRank! He uses Java primarily for backend development, OOP concepts, algorithms, and Spring Boot applications. He\'s built production-grade systems with clean architecture and best practices.`;
+      }
+
+      if (msg.includes('python') || msg.includes('ml') || msg.includes('machine learning')) {
+        return `🐍 **Python** — 4-star Python coder on HackerRank! Aditya uses Python extensively for machine learning, NLP, data science, and backend APIs. He\'s skilled with Scikit-learn, TensorFlow, and Flask. Perfect for building intelligent systems!`;
+      }
+
+      if (msg.includes('spring boot') || msg.includes('spring')) {
+        return `🌱 **Spring Boot** — Aditya is experienced with Spring Boot for building scalable backend systems. He follows clean architecture patterns (Controller-Service-Repository), uses JPA for ORM, and deploys to cloud platforms like Render. Solid full-stack developer!`;
+      }
+
+      if (msg.includes('nlp') || msg.includes('natural language')) {
+        return `📚 **NLP (Natural Language Processing)** — Aditya has hands-on experience with NLP pipelines. He\'s built the Fake Review Identifier using TF-IDF vectorization, text preprocessing, and ML models. He understands tokenization, embeddings, and text classification.`;
+      }
+
+      if (msg.includes('flask')) {
+        return `🔥 **Flask** — Aditya uses Flask to build lightweight REST APIs and web applications. He\'s deployed Flask apps for ML predictions and interactive frontends. Great for prototyping and production deployment!`;
+      }
+
+      if (msg.includes('sql') || msg.includes('database') || msg.includes('postgresql') || msg.includes('mysql')) {
+        return `🗄️ **Databases** — Aditya works with both MySQL and PostgreSQL. He understands relational databases, query optimization, and data modeling. Great experience with JPA/Hibernate for ORM and clean persistence layers.`;
+      }
+
+      if (msg.includes('git') || msg.includes('version control')) {
+        return `📁 **Git & Version Control** — Aditya uses Git professionally for version control and collaboration. His code is available on GitHub (linked on the portfolio), and he follows proper branching strategies and commit hygiene.`;
+      }
+
+      if (msg.includes('postman') || msg.includes('api')) {
+        return `🧪 **Postman & API Testing** — Aditya uses Postman for API testing and development. He builds robust REST APIs and tests them thoroughly before deployment. Strong understanding of HTTP methods, status codes, and API design.`;
+      }
+
+      if (msg.includes('javascript') || msg.includes('html') || msg.includes('css') || msg.includes('frontend') || msg.includes('web')) {
+        return `🎨 **Frontend (HTML/CSS/JavaScript)** — Aditya has solid frontend skills for building interactive UIs. He\'s created web applications with responsive design, smooth animations, and great UX. This portfolio is a good example of his frontend work!`;
+      }
+
+      // ─── PROJECTS - GENERAL ──────────────
+      if (msg.includes('project') || msg.includes('built') || msg.includes('build') || msg.includes('work') && !msg.includes('work with')) {
+        let response = '🚀 Aditya has built some impressive projects:\n\n';
+        chatbotData.projects.forEach(p => {
+          response += `📌 **${p.name}**\n${p.desc}\n🔧 Tech: ${p.tech}\n\n`;
+        });
+        return response;
+      }
+
+      // ─── SPECIFIC PROJECTS ───────────────
+      if (msg.includes('url shortener') || msg.includes('url')) {
+        return `🔗 **URL Shortener** — A Spring Boot web app with clean layered architecture (Controller-Service-Repository). Features secure URL validation, unique short code generation, and efficient HTTP-based redirection. Built with PostgreSQL and JPA, deployed on Render for world-class hosting. Check GitHub for the full code!`;
+      }
+
+      if (msg.includes('fake review') || msg.includes('review identifier') || msg.includes('nlp') && msg.includes('project')) {
+        return `🔍 **Fake Review Identifier** — An end-to-end NLP system that detects and classifies fake product reviews. Uses TF-IDF vectorization with Logistic Regression & SVM for classification. Production-ready Flask REST API with an interactive frontend for real-time inference. Smart system to combat review fraud!`;
+      }
+
+      if (msg.includes('churn') || msg.includes('customer churn')) {
+        return `📊 **Customer Churn Prediction** — A predictive ML system using Logistic Regression and Random Forest to forecast customer churn. Includes comprehensive EDA, smart feature engineering, data visualization with Matplotlib/Seaborn, and a Flask API with real-time dashboard. Perfect for business analytics!`;
+      }
+
+      // ─── RESEARCH & PUBLICATIONS ────────
+      if (msg.includes('research') || msg.includes('publication') || msg.includes('published') || msg.includes('paper') || msg.includes('journal')) {
+        return `📄 **Research Publication** — Aditya published: "${chatbotData.research}" This shows his academic rigor and contribution to the field of education and project management systems!`;
+      }
+
+      if (msg.includes('projectbuddy')) {
+        return `📄 **ProjectBuddy** — Aditya\'s research publication about a guided learning platform for student projects. Published in IJSREM Vol. 09, Issue 05, May 2025. DOI: 10.55041/IJSREM43773. It demonstrates his ability to combine coding, research, and educational impact!`;
+      }
+
+      // ─── ACHIEVEMENTS ────────────────────
+      if (msg.includes('achievement') || msg.includes('award') || msg.includes('accomplish') || msg.includes('recognition') || msg.includes('hackerrank') || msg.includes('rating')) {
+        let response = '🏆 **Achievements & Recognition**\n';
+        chatbotData.achievements.forEach(a => {
+          response += `✦ ${a}\n`;
+        });
+        return response;
+      }
+
+      if (msg.includes('5 star') || msg.includes('5-star') || msg.includes('hackerrank')) {
+        return `⭐ **HackerRank Ratings** — Aditya is a 5-star Java coder and 4-star Python coder on HackerRank! These ratings showcase his strong algorithmic thinking, coding proficiency, and problem-solving skills. He regularly solves competitive programming challenges!`;
+      }
+
+      // ─── LEADERSHIP & IEEE ───────────────
+      if (msg.includes('ieee') || msg.includes('leadership') || msg.includes('chair') || msg.includes('vice')) {
+        return `🏛️ **IEEE Leadership (CIS CUSB)** — Aditya served as Vice Chairperson of IEEE Computational Intelligence Society at Chandigarh University from May 2023 to May 2024. He also served as Webmaster! He drove technical events, mentored students, and fostered the tech community on campus. Great leadership experience!`;
+      }
+
+      if (msg.includes('webmaster')) {
+        return `🌐 **IEEE Webmaster** — Aditya served as Webmaster for IEEE CIS CUSB, managing and developing the chapter\'s web presence. He built and maintained the website, showcasing his full-stack development skills and tech leadership!`;
+      }
+
+      // ─── DEBATE & SOFT SKILLS ───────────
+      if (msg.includes('debate') || msg.includes('runner-up') || msg.includes('competition')) {
+        return `🎤 **Debate Champion** — Aditya secured 2nd Runner-up in the University Debate Competition! This shows he\'s not just a coder but also excellent at articulation, analytical thinking, and presenting ideas under pressure. Great communication skills for any team!`;
+      }
+
+      if (msg.includes('soft skill') || msg.includes('communication') || msg.includes('public speaking')) {
+        return `🎤 Aditya has strong communication and presentation skills. His debate achievement, IEEE leadership experience, and ability to explain complex technical concepts all showcase his excellence in soft skills. He can code AND communicate! 💪`;
+      }
+
+      // ─── GAMES ──────────────────────────
+      if (msg.includes('game') || msg.includes('2048') || msg.includes('rock paper') || msg.includes('typing') || msg.includes('maze')) {
+        return `🎮 Aditya\'s built some addictive games!\n\n🟦 **2048** — Classic sliding puzzle game, fully playable\n✊ **Rock Paper Scissors** — Play against AI with score tracking\n⌨️ **Typing Speed Test** — Race against time with WPM metrics\n🌀 **Maze Runner** — Navigate procedural mazes with keyboard controls\n\nAll deployed and live on the portfolio!`;
+      }
+
+      if (msg.includes('2048')) {
+        return `🟦 **2048** — A deceptively simple but endlessly addictive puzzle game. Slide and merge numbered tiles on a 4×4 board to reach the elusive 2048 tile. Pure strategy + spatial thinking = addictive gameplay! Fully functional and deployed!`;
+      }
+
+      if (msg.includes('rock') || msg.includes('paper') || msg.includes('scissors')) {
+        return `✊ **Rock Paper Scissors** — The classic hand-gesture duel reimagined for the web. Face off against a crafty AI opponent with intelligent strategies. Score tracking and instant feedback. Simple, fun, and competitive!`;
+      }
+
+      if (msg.includes('typing speed') || msg.includes('typing test')) {
+        return `⌨️ **Typing Speed Test** — Race against the clock to type passages accurately and blazingly fast. Real-time WPM and accuracy metrics, personal best tracking, and curated passages. Perfect for improving typing skills!`;
+      }
+
+      if (msg.includes('maze')) {
+        return `🌀 **Maze Runner** — Navigate a procedurally-generated challenging maze from start to finish. Test your spatial awareness and patience. Find the exit before time runs out! Keyboard controls, smooth gameplay.`;
+      }
+
+      // ─── EDUCATION ──────────────────────
+      if (msg.includes('education') || msg.includes('university') || msg.includes('chandigarh') || msg.includes('degree') || msg.includes('engineering')) {
+        return `🎓 ${chatbotData.education}\n\nHe\'s actively learning, building projects, and gaining real-world experience while pursuing his degree. Education + practical work = unstoppable!`;
+      }
+
+      if (msg.includes('year') && msg.includes('class')) {
+        return `🎓 Aditya is a CS engineering student at Chandigarh University, currently in 3rd year (as of 2025). Expected graduation: 2026. Years of hands-on learning alongside formal education!`;
+      }
+
+      // ─── CONTACT & REACH OUT ────────────
+      if (msg.includes('contact') || msg.includes('reach') || msg.includes('email') || msg.includes('phone') || msg.includes('linkedin') || msg.includes('github') || msg.includes('social')) {
+        return `📧 **Get in Touch**\n\nEmail: adityaa07singh@gmail.com\n☎️ Phone: +91 7505984084\n\nAlso available on:\n💼 LinkedIn: linkedin.com/in/adityasingh (on portfolio)\n🐙 GitHub: github.com/Adi96singh (on portfolio)\n\nAditya is open to opportunities, collaborations, and conversations!`;
+      }
+
+      if (msg.includes('linkedin')) {
+        return `💼 **LinkedIn** — Aditya\'s LinkedIn profile is linked on the portfolio! Connect with him there to see his professional network, endorsements, and detailed work history. Always open to meaningful professional connections!`;
+      }
+
+      if (msg.includes('github') || msg.includes('open source') || msg.includes('code')) {
+        return `🐙 **GitHub** — Aditya\'s GitHub is linked on the portfolio! You can see all his projects, code quality, commit history, and contributions. His repositories are well-documented and showcase clean coding practices!`;
+      }
+
+      // ─── LOCATION ──────────────────────
+      if (msg.includes('location') || msg.includes('where') || msg.includes('mohali')) {
+        return `📍 Aditya is based in Mohali, India. He studies at Chandigarh University (nearby) and is open to remote opportunities as well as in-person roles in major tech hubs!`;
+      }
+
+      // ─── JOB SEARCH & OPPORTUNITIES ─────
+      if (msg.includes('hiring') || msg.includes('job') || msg.includes('opportunity') || msg.includes('looking for') || msg.includes('open to')) {
+        return `💼 **Open to Opportunities!** Aditya is actively seeking entry-level software engineering roles where he can apply his backend development, ML, and system design skills. Perfect for companies looking for a versatile, eager, and skilled engineer! 🚀`;
+      }
+
+      if (msg.includes('intern') || msg.includes('internship')) {
+        return `🎯 While Aditya is primarily looking for full-time entry-level SDE roles, he\'s definitely interested in discussing meaningful opportunities! His track record shows he hits the ground running and ships real impact. Reach out to adityaa07singh@gmail.com!`;
+      }
+
+      // ─── EXPERIENCE LEVEL ──────────────
+      if (msg.includes('experience') || msg.includes('how many') || msg.includes('senior') || msg.includes('junior')) {
+        return `👨‍💻 Aditya is an entry-level professional seeking his first full-time SDE role. However, his portfolio is NOT entry-level:\n✓ Published research\n✓ 5-star Java / 4-star Python coder\n✓ 3 full production projects\n✓ IEEE leadership experience\n✓ Real-world problem solving\n\nHe\'s more than ready!`;
+      }
+
+      // ─── LEARNING & GROWTH ─────────────
+      if (msg.includes('learning') || msg.includes('study') || msg.includes('improve') || msg.includes('next skill')) {
+        return `📚 Aditya is passionate about continuous learning! He studies AI research, explores new technologies, hunts for interesting problems, and recently completed a 30-day Java learning challenge with daily Twitter posts. Always growing, always shipping! 🚀`;
+      }
+
+      if (msg.includes('30 day') || msg.includes('java challenge') || msg.includes('twitter')) {
+        return `🎯 **30-Day Java Challenge** — Aditya completed a public, consistent 30-day Java learning challenge, posting daily on Twitter! No audience pressure, just pure commitment to learning. He shared everything from basics to advanced concepts and now offers free Java notes for anyone learning. That\'s dedication! 📚`;
+      }
+
+      if (msg.includes('coffee') || msg.includes('hobby') || msg.includes('interest') || msg.includes('when not')) {
+        return `☕ When not coding, Aditya studies AI research, competes in debates, hunts for interesting problems to solve, and apparently converts coffee into code! 😄 He\'s driven by curiosity and the desire to build things that matter.`;
+      }
+
+      // ─── PRODUCTIVITY & WORK STYLE ──────
+      if (msg.includes('work style') || msg.includes('approach') || msg.includes('methodology') || msg.includes('process')) {
+        return `🏗️ Aditya believes in:\n✓ Clean architecture & best practices\n✓ Production-grade code (not quick hacks)\n✓ Real-world problem solving\n✓ Consistent learning & improvement\n✓ Shipping actual products\n✓ Writing well-documented code\n\nHe\'s not just a coder, he\'s an engineer! ⚙️`;
+      }
+
+      // ─── QUICK QUESTIONS ──────────────
+      if (msg === '?' || msg === 'help' || msg.includes('what can') && msg.includes('ask')) {
+        return `Here are some things you can ask me about Aditya:\n\n✓ Who are you / about you\n✓ Skills & technologies\n✓ Projects you built\n✓ Research publications\n✓ Achievements & awards\n✓ IEEE leadership\n✓ Games you developed\n✓ How to contact you\n✓ Job opportunities\n✓ Education\n\nJust ask naturally! 😊`;
+      }
+
+      // ─── PORTFOLIO FEEDBACK ─────────────
+      if (msg.includes('portfolio') || msg.includes('website') || msg.includes('design')) {
+        return `🎨 This portfolio is built with modern web tech! It features:\n✓ Smooth animations & glassmorphism design\n✓ Dark theme with vibrant accents\n✓ Responsive design for all devices\n✓ Custom cursor effects\n✓ Reveal animations on scroll\n✓ Interactive chatbot (that\'s me!)\n✓ Clean, semantic HTML & modular CSS\n\nAditya coded this beauty himself! 💪`;
+      }
+
+      // Default response
+      return `I\'m specifically tuned to Aditya\'s info, so that\'s a bit outside my wheelhouse! 🤔\n\nTry asking about:\n• Projects & skills\n• Achievements & research\n• Contact info\n• Games & hobbies\n• Job opportunities\n\nOr type "help" to see what else I can do!`;
+    }
+
+    function handleMessage() {
+      const text = chatbotInput.value.trim();
+      if (!text) return;
+
+      sendChatMessage(text, true);
+      chatbotInput.value = '';
+
+      setTimeout(() => {
+        showTyping();
+        setTimeout(() => {
+          removeTyping();
+          const response = getBotResponse(text);
+          sendChatMessage(response, false);
+        }, 600);
+      }, 300);
+    }
+
+    // Toggle chatbot
+    chatbotIcon.addEventListener('click', () => {
+      chatbotWindow.classList.toggle('hidden');
+      if (!chatStarted && !chatbotWindow.classList.contains('hidden')) {
+        chatStarted = true;
+        setTimeout(() => {
+          sendChatMessage('Hi 👋\n\nI\'m Aditya\'s portfolio assistant. Ask me about his projects, skills, or research!', false);
+        }, 300);
+      }
+      if (!chatbotWindow.classList.contains('hidden')) {
+        chatbotInput.focus();
+      }
+    });
+
+    closeChatbot.addEventListener('click', () => {
+      chatbotWindow.classList.add('hidden');
+    });
+
+    chatbotSend.addEventListener('click', handleMessage);
+    chatbotInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') handleMessage();
     });
   </script>
 </body>
