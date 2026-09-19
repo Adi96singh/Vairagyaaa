@@ -15,13 +15,14 @@ import {
   Link,
   ChevronRight,
   ArrowRight,
-} from "lucide-react";
+} from "lucide-react";  
+import type { LucideIcon } from "lucide-react";
 import { GithubIcon } from "@/components/ui/Icons";
 import { projects, type Project } from "@/data/profile";
 import SectionWrapper, { SectionTitle } from "@/components/ui/SectionWrapper";
 import { useState } from "react";
 
-const iconMap: Record<string, React.ElementType> = {
+const iconMap: Record<string, LucideIcon> = {
   shield: Shield,
   wallet: Wallet,
   search: Search,
